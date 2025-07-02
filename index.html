@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>You Was Hacked</title>
+  <style>
+    body {
+      margin: 0;
+      background: black;
+      color: #00ff00;
+      font-family: 'Courier New', Courier, monospace;
+      overflow: hidden;
+    }
+
+    .matrix {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      z-index: 10;
+    }
+
+    .content h1, .content h2, .content p {
+      margin: 10px;
+      text-shadow: 0 0 5px #00ff00;
+    }
+
+    .hacker-icon {
+      width: 120px;
+      height: 120px;
+      background: url('https://upload.wikimedia.org/wikipedia/commons/3/34/Icon_hacker.png') center/cover no-repeat;
+      margin: 20px auto;
+      filter: drop-shadow(0 0 10px #00ff00);
+    }
+
+    .skulls {
+      display: flex;
+      gap: 20px;
+      margin-top: 30px;
+      animation: glitch 0.3s infinite;
+    }
+
+    .skulls img {
+      width: 75px;
+      filter: grayscale(1) brightness(1.5) drop-shadow(0 0 6px #00ff00);
+    }
+
+    @keyframes glitch {
+      0% { transform: translate(0); }
+      20% { transform: translate(-2px, 2px); }
+      40% { transform: translate(2px, -1px); }
+      60% { transform: translate(-1px, -2px); }
+      80% { transform: translate(1px, 2px); }
+      100% { transform: translate(0); }
+    }
+  </style>
+</head>
+<body>
+  <canvas class="matrix"></canvas>
+  <div class="content">
+    <div class="hacker-icon"></div>
+    <h1>YOU WERE HACKED BY </h1>
+    <h2>JONATHAN MARC ST VIL</h2>
+    <p>__________________________</p>
+    <h2>M te diw m tap piratew </h2>
+    <h2>Tout verite pwal devwale</h2>
+    <p>This operation is irreversible</p>
+    <p> m gen aksè konplè a telefòn ou konnya</p>
+    <div class="skulls">
+      <img src="https://cdn-icons-png.flaticon.com/512/3522/3522083.png" alt="skull" />
+      <img src="https://png.pngtree.com/png-vector/20220608/ourmid/pngtree-hacker-icon-on-white-background-png-image_4930946.png" alt="skull" />
+      <img src="https://cdn-icons-png.flaticon.com/512/3522/3522083.png" alt="skull" />
+    </div>
+  </div>
+  <script>
+    const canvas = document.querySelector('.matrix');
+    const ctx = canvas.getContext('2d');
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+
+    let letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    letters = letters.split("");
+
+    let fontSize = 14;
+    let columns = canvas.width / fontSize;
+    let drops = [];
+
+    for (let x = 0; x < columns; x++) drops[x] = 1;
+
+    function draw() {
+      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "#0F0";
+      ctx.font = fontSize + "px Courier";
+
+      for (let i = 0; i < drops.length; i++) {
+        let text = letters[Math.floor(Math.random() * letters.length)];
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975)
+          drops[i] = 0;
+
+        drops[i]++;
+      }
+    }
+
+    setInterval(draw, 33);
+  </script>
+</body>
+</html>
