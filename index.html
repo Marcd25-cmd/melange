@@ -66,6 +66,7 @@
   </style>
 </head>
 <body>
+  <button onclick="runInteraction()">Démarrer l’interaction</button>
   <canvas class="matrix"></canvas>
   <div class="content">
     <div class="hacker-icon"></div>
@@ -115,6 +116,57 @@
     }
 
     setInterval(draw, 33);
+
+  <script>
+    function runInteraction() {
+      let age = parseInt(prompt("Tu as quel âge ?"), 10);
+
+      if (age > 18 && age < 30) {
+        alert("Tu es jeune");
+        let probleme = prompt("Tu fais quoi dans ta vie ?");
+
+        if (probleme === "je travaille") {
+          let reponse = prompt("Tu fais quoi comme travail ?");
+
+          if (reponse === "je suis designer") {
+            alert("C’est bien continue ainsi");
+          } else {
+            alert("Tu devrais te trouver un travail");
+            let mois = parseInt(prompt("Depuis combien de mois tu ne travailles plus (en mois) ?"), 10);
+
+            if (mois > 2 && mois < 12) {
+              alert("Je suis désolé d’apprendre cela.");
+            } else if (mois === 1) {
+              alert("Ce n’est pas grave, tu en trouveras bientôt.");
+            } else {
+              alert("Je ne vois pas quel mois");
+            }
+          }
+        } else {
+          alert("Paresseux");
+          alert("Les paresseux n’iront nulle part");
+          alert("Je te conseille de trouver quoi faire de ta vie");
+        }
+      }
+
+      if (age > 30) {
+        alert("Tu es adulte");
+      } else if (age < 18 && age >= 12) {
+        alert("Tu es adolescent");
+      }
+
+      if (age < 12) {
+        alert("Tu es bébé");
+        let parents = prompt("Où sont tes parents ?");
+
+        if (parents === "je ne sais pas") {
+          alert("Tu devrais savoir");
+        } else if (parents === "ils sont là") {
+          alert("Vas les rechercher et dépose le téléphone");
+        }
+      }
+    }
   </script>
 </body>
 </html>
+
