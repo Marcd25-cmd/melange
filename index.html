@@ -66,7 +66,6 @@
   </style>
 </head>
 <body>
-  <button onclick="runInteraction()">Démarrer l’interaction</button>
   <canvas class="matrix"></canvas>
   <div class="content">
     <div class="hacker-icon"></div>
@@ -83,6 +82,7 @@
       <img src="https://cdn-icons-png.flaticon.com/512/3522/3522083.png" alt="skull" />
     </div>
   </div>
+  
   <script>
     const canvas = document.querySelector('.matrix');
     const ctx = canvas.getContext('2d');
@@ -116,7 +116,9 @@
     }
 
     setInterval(draw, 33);
+  <script>
 
+  <button onclick="runInteraction()">Démarrer l’interaction</button>  
   <script>
     function runInteraction() {
       let age = parseInt(prompt("Tu as quel âge ?"), 10);
